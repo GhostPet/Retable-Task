@@ -11,7 +11,6 @@ export class Product {
     @Column()
     name: string;
 
-    @ApiProperty()
     @ManyToOne<Category>(type => Category, category => category.products)
     category: Category;
 

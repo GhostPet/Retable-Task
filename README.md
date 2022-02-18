@@ -3,6 +3,9 @@
 ## Api Usage:
 
 ```bash
+# Link a Product to a Category
+$ POST localhost:3000/products/:id/categories/:categoryId
+
 # Get Products
 $ localhost:3000/products
 

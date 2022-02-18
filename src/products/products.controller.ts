@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 import { Crud, CrudController } from '@nestjsx/crud';
 import { Product } from './products.entity';
 import { ProductsService } from './products.service';
@@ -11,6 +11,12 @@ import { ProductsService } from './products.service';
 @Controller('products')
 export class ProductsController implements CrudController<Product> {
     constructor(public service: ProductsService) { }
+
+    // Link a product to a category
+    @Post('/:id/categories/:categoryId')
+    async linkProductToCategory(@Param('id') id: number, @Param('categoryId') categoryId: number): Promise<Product> {
+        return await this.service.linkProductToCategory(id, categoryId);
+    }
 
     // Get all products
     @Get()
