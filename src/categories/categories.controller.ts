@@ -13,12 +13,6 @@ import { Product } from '../products/products.entity';
 export class CategoriesController implements CrudController<Category> {
     constructor(public service: CategoriesService) { }
 
-    // Get category with all products inside
-    @Get(':id')
-    async getOneCategory(@Param('id') id: number): Promise<Category> {
-        return await this.service.getOneCategory(id);
-    }
-
     // Get products inside category
     @Get(':id/products')
     async getProducts(@Param('id') id: number): Promise<Product[]> {

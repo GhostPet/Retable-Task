@@ -10,13 +10,6 @@ export class CategoriesService extends TypeOrmCrudService<Category> {
         super(repo);
     }
 
-    // Get One
-    async getOneCategory(id: number): Promise<Category> {
-        return await this.repo.findOne(id, {
-            relations: ['products']
-        });
-    }
-
     // Get Products
     async getProducts(id: number): Promise<Product[]> {
         var category =  await this.repo.findOne(id, {
