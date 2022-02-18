@@ -10,6 +10,15 @@ export class CategoriesService extends TypeOrmCrudService<Category> {
         super(repo);
     }
 
+    // Link a category to a product
+    async linkCategoryToProduct(id: number, productId: number): Promise<Category> {
+        await this.repo.createQueryBuilder()
+            .relation(Category, 'products')
+            .of(id)
+            .add(productId);
+        return this.repo.findOne(id, { relations: ['products'] });
+    }
+
     // Get Products
     async getProducts(id: number): Promise<Product[]> {
         var category =  await this.repo.findOne(id, {

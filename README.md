@@ -4,7 +4,7 @@
 
 ```bash
 # Link a Product to a Category
-$ POST localhost:3000/products/:id/categories/:categoryId
+$ POST localhost:3000/categories/link/:id/:productId
 
 # Get Products
 $ localhost:3000/products

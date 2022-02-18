@@ -12,12 +12,6 @@ import { ProductsService } from './products.service';
 export class ProductsController implements CrudController<Product> {
     constructor(public service: ProductsService) { }
 
-    // Link a product to a category
-    @Post('/:id/categories/:categoryId')
-    async linkProductToCategory(@Param('id') id: number, @Param('categoryId') categoryId: number): Promise<Product> {
-        return await this.service.linkProductToCategory(id, categoryId);
-    }
-
     // Get all products
     @Get()
     async getAllProducts(): Promise<Product[]> {
